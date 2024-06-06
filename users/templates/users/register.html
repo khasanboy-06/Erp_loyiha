@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" style="background-color: rgb(172, 199, 199);">
+
+    <form  method="post" >
+        {% csrf_token %}
+
+        {{form}}
+
+        <button type="submit" class="btn btn-success mt-2">Register</button>
+    </form>
+    </div>
+
+{% endblock content %}

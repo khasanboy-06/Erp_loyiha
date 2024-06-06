@@ -1,0 +1,22 @@
+{% extends 'students/dashboard.html' %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Guruh nomi</th>
+        <th scope="col">Yo'nalishi</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr class="table-warning">
+        <th scope="row">{{student.team.id}}</th>
+        <td>{{student.team.name}}</td>
+        <td>Dasturlash</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock content %}

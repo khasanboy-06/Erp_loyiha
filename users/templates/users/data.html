@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div><a class="btn btn-success" href="{% url 'users:register' %}">Create</a></div>
+    <table class="table table-info">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Phone number</th>
+            <th scope="col">Username</th>
+            <th scope="col">Buttons</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for user in form %}
+          <tr>
+            <th scope="row">{{user.id}}</th>
+            <td><a href="{% url 'users:profile' %}">{{user.first_name}}</a></td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.phone_number}}</td>
+            <td>{{user.username}}</td>
+            <td>
+              <a class="btn btn-outline-danger" href="{% url 'users:delete' user.id %}">Delete</a>
+              <a class="btn btn-outline-warning" href="">Update</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock content %}

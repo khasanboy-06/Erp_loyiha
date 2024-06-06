@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" style="background-color: rgb(214, 226, 226);">
+
+<form  method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form}}
+
+    <button type="submit" class="btn btn-success mt-2">Save</button>
+</form>
+</div>
+
+{% endblock content %}
