@@ -31,20 +31,20 @@
           <nav aria-label="breadcrumb" class="bg-body-tertiary rounded-3 p-3 mb-4">
             <ol class="breadcrumb mb-0">
               {% if user.is_authenticated %}
-                <li class="breadcrumb-item"><a href="{% url 'users:logout' %}">Log out</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'users:profile' %}">Profile</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'users:logout' %}" style="color: black;"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'users:profile' %}" style="color: black;"><i class="fa-solid fa-user"></i>Profile</a></li>
                 {% if user.user_role == 'admin' %}
-                <li class="breadcrumb-item"><a href="{% url 'users:register' %}">Register</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'users:groups' %}">Groups</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'users:students' %}">Students</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'users:register' %}" style="color: black;"><i class="fa-solid fa-registered"></i>Register</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'users:groups' %}" style="color: black;"><i class="fa-solid fa-users-line"></i>Groups</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'users:students' %}" style="color: black;"><i class="fa-solid fa-graduation-cap"></i>Students</a></li>
                 {% endif %}
 
               {% if user.user_role == 'student' %}
-              <li class="breadcrumb-item"><a href="{% url 'students:dashboard' %}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{% url 'students:dashboard' %}" style="color: black;"><i class="fa-solid fa-table-columns"></i>Dashboard</a></li>
               {% endif %}
 
               {% else %}
-                <li class="breadcrumb-item"><a href="{% url 'users:login' %}">Log in</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'users:login' %}" style="color: black;"><i class="fa-solid fa-right-to-bracket"></i>Log in</a></li>
               {% endif %}
             </ol>
           </nav>
