@@ -13,7 +13,7 @@
     <tbody >
       <tr class="table-warning">
         <th scope="row">{{student.team.id}}</th>
-        <td>{{student.team.name}}</td>
+        <td><a href="{% url 'students:lessons' student.team.id %}">{{student.team.name}}</a></td>
         <td>Dasturlash</td>
       </tr>
     </tbody>
