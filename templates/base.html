@@ -43,6 +43,10 @@
               <li class="breadcrumb-item"><a href="{% url 'students:dashboard' %}" style="color: black;"><i class="fa-solid fa-table-columns"></i>Dashboard</a></li>
               {% endif %}
 
+              {% if user.user_role == 'teacher' %}
+              <li class="breadcrumb-item"><a href="{% url 'teachers:teacher' %}" style="color: black;"><i class="fa-solid fa-table-columns"></i>Dashboard</a></li>
+              {% endif %}
+
               {% else %}
                 <li class="breadcrumb-item"><a href="{% url 'users:login' %}" style="color: black;"><i class="fa-solid fa-right-to-bracket"></i>Log in</a></li>
               {% endif %}
