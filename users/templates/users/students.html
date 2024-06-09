@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'users/admin_dashboard.html' %}
 
 
 {% block content %}
 
-<div class="container" >
+<div class="container">
   <form method="get">
     <div class="input-group">
       <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-      <button type="submit" class="btn btn-outline-primary" data-mdb-ripple-init>search</button>
+      <button type="submit" class="btn btn-primary" data-mdb-ripple-init>search</button>
     </div>
 </form>
-  <table class="table align-middle mb-0">
+  <table class="table table-warning align-middle mb-0">
     <thead class="bg-info">
       <tr>
         <th>Full name</th>

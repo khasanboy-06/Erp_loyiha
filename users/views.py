@@ -12,6 +12,7 @@ class AdminDashboardView(AdminRequiredMixin, View):
     def get(self, request):
         return render(request, 'users/admin_dashboard.html')
 
+
 class LoginView(View):
     def get(self, request):
         form = LoginForm()
