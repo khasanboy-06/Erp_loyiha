@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LoginView, RegisterView, Profile, EditProfileView, LogoutView, GroupView, StudentListView, EditStudentView, DeleteStudentView, StudentByTeamView, ResetPasswordView
+from .views import LoginView, RegisterView, Profile, EditProfileView, LogoutView, GroupView, StudentListView, EditStudentView, DeleteStudentView, StudentByTeamView, ResetPasswordView, AdminDashboardView
 from .views import Data, delete
 
 app_name = 'users'
@@ -19,4 +19,5 @@ urlpatterns = [
     path('delete-student/<int:id>/', DeleteStudentView.as_view(), name='delete_student'),
     path('student-by-team/<int:id>/', StudentByTeamView.as_view(), name='student_by_team'),
     path('reset-password/', ResetPasswordView.as_view(), name='reset_password'),
+    path('admin-dashboard/', AdminDashboardView.as_view(), name='admin_dashboard'),
 ]

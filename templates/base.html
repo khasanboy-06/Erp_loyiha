@@ -34,9 +34,10 @@
                 <li class="breadcrumb-item"><a href="{% url 'users:logout' %}" style="color: black;"><i class="fa-solid fa-right-from-bracket"></i>Log out</a></li>
                 <li class="breadcrumb-item"><a href="{% url 'users:profile' %}" style="color: black;"><i class="fa-solid fa-user"></i>Profile</a></li>
                 {% if user.user_role == 'admin' %}
-                <li class="breadcrumb-item"><a href="{% url 'users:register' %}" style="color: black;"><i class="fa-solid fa-registered"></i>Register</a></li>
+                <!-- <li class="breadcrumb-item"><a href="{% url 'users:register' %}" style="color: black;"><i class="fa-solid fa-registered"></i>Register</a></li>
                 <li class="breadcrumb-item"><a href="{% url 'users:groups' %}" style="color: black;"><i class="fa-solid fa-users-line"></i>Groups</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'users:students' %}" style="color: black;"><i class="fa-solid fa-graduation-cap"></i>Students</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'users:students' %}" style="color: black;"><i class="fa-solid fa-graduation-cap"></i>Students</a></li> -->
+                <li class="breadcrumb-item"><a href="{% url 'users:admin_dashboard' %}" style="color: black;"><i class="fa-solid fa-graduation-cap"></i>Dashboard</a></li>
                 {% endif %}
 
               {% if user.user_role == 'student' %}

@@ -7,6 +7,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .permissions import AdminRequiredMixin
 from django.db.models import Q
 
+
+class AdminDashboardView(AdminRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'users/admin_dashboard.html')
+
 class LoginView(View):
     def get(self, request):
         form = LoginForm()
