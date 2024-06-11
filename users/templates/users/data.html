@@ -1,10 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'users/admin_dashboard.html' %}
 
 {% block content %}
 
 <div class="container">
-  <div><a class="btn btn-success" href="{% url 'users:register' %}">Create</a></div>
-    <table class="table table-info">
+    <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -24,8 +23,8 @@
             <td>{{user.phone_number}}</td>
             <td>{{user.username}}</td>
             <td>
-              <a class="btn btn-outline-danger" href="{% url 'users:delete' user.id %}">Delete</a>
-              <a class="btn btn-outline-warning" href="">Update</a></td>
+              <a class="btn btn-outline-danger" href="{% url 'users:delete' user.id %}"><i class="fa-solid fa-trash"></i></a>
+              <a class="btn btn-outline-warning" href=""><i class="fa-solid fa-pen-to-square"></i></a></td>
           </tr>
           {% endfor %}
         </tbody>
