@@ -15,7 +15,7 @@
       <tr class="table-warning">
         <td>{{lesson.title}}</td>
         <td>{{lesson.date}}</td>
-        <td>{% if lesson.homework_status %} <button class="btn btn-success">Bajarilgan</button> {% else %} <a href="{% url 'students:homework' lesson.id %}" class="btn btn-danger">Bajarilmagan</a>  {% endif %}</td>
+        <td>{% if lesson.homework_status %} <a href="{% url 'students:homework_detail' lesson.id %}" class="btn btn-success">Bajarilgan</a> {% else %} <a href="{% url 'students:homework' lesson.id %}" class="btn btn-danger">Bajarilmagan</a>  {% endif %}</td>
       </tr>
       {% endfor %}
     </tbody>
