@@ -1,0 +1,25 @@
+{% extends 'teachers/teacher_dashboard.html' %}
+
+{% block content %}
+
+<table class="table">
+    <div class="container" ><a style="color: black;" href="#">Vazifalar</a></div>
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col">Homework status</th>
+      </tr>
+    </thead>
+    <tbody >
+        {% for lesson in lessons %}
+      <tr class="table-warning">
+        <td>{{lesson.title}}</td>
+        <td>{{lesson.date}}</td>
+        <td>Active</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
