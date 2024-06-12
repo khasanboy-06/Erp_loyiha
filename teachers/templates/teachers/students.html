@@ -1,0 +1,24 @@
+{% extends 'teachers/teacher_dashboard.html' %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Full name</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody >
+        {% for student in students %}
+      <tr class="table-warning">
+        <td>{{student.first_name}}</td>
+        <td></td>
+        <td>Active</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
