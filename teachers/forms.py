@@ -1,6 +1,6 @@
-# from django import forms
-# from users.models import Team
+from django import forms
+from students.models import Lesson
 
 
-
-# class EditGroupForm()
+class CreateLessonForm(forms.Form):
+    title = forms.CharField(widget=forms.TextInput({"class":"form-control"}))

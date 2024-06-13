@@ -3,6 +3,7 @@ from django.views import View
 from users.permissions import TeacherRequiredMixin
 from users.models import Teacher, Team
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import CreateLessonForm
 
 
 class TeacherDashboardView(TeacherRequiredMixin, View):
@@ -33,3 +34,15 @@ class TeacherStudentsView(TeacherRequiredMixin, View):
         team = get_object_or_404(Team, id=team_id)
         students = team.students.all()
         return render(request, 'teachers/students.html', context={'team':team, 'students':students})
+    
+
+class TeacherCreateLessonView(TeacherRequiredMixin, View):
+    def get(self, request, team_id):
+        form = CreateLessonForm()
+        return render(request, 'teachers/create_lesson.html', context={"form":form})
+    
+    def post(self, request, team_id):
+        team = get_object_or_404(Team, id=team_id)
+        form = CreateLessonForm(request.POST)
+        if form.is_valid():
+            lesson = Less
