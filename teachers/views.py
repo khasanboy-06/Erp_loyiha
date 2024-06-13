@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from users.permissions import TeacherRequiredMixin
-from users.models import Teacher, Team
+from users.models import Teacher, Team, User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CreateLessonForm
 from students.models import Lesson
 from django.urls import reverse
+from users.forms import ProfileForm
+
 
 
 class TeacherDashboardView(TeacherRequiredMixin, View):
@@ -55,4 +57,16 @@ class TeacherCreateLessonView(TeacherRequiredMixin, View):
             return redirect(url)
         
 
-    
+class EditProfileView(LoginRequiredMixin, View):
+    def get(self, request, id):
+        user = get_object_or_404(User, id=id)
+        form = ProfileForm(instance=user)
+        return render(request, 'teachers/edit_profile.html', {'form': form})
+
+    def post(self, request, id):
+        user = get_object_or_404(User, id=id)
+        form = ProfileForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('/profile') 
+        return render(request, 'teachers/edit_profile.html', {'form': form})    

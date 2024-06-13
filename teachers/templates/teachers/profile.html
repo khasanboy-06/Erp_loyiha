@@ -19,7 +19,7 @@
               <p class="text-muted mb-4">{{user.address}}</p>
               <div class="d-flex justify-content-center mb-2">
                 <a href="{% url 'users:reset_password' %}" class="btn btn-primary">Reset password</a>
-                <a href="{% url 'users:edit_profile' user.id %}" class="btn btn-outline-primary ms-1">Edit</a>
+                <a href="{% url 'teachers:edit_profile' user.id %}" class="btn btn-outline-primary ms-1">Edit</a>
               </div>
             </div>
           </div>      
