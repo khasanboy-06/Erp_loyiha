@@ -12,7 +12,7 @@
     </thead>
     <tbody >
         {% for team in teams %}
-      <tr class="table-warning">
+      <tr >
         <th scope="row">{{team.id}}</th>
         <td><a href="{% url 'teachers:lessons' team.id %}">{{team.name}}</a></td>
         <td>Dasturlash</td>

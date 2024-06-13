@@ -26,7 +26,12 @@ class LoginView(View):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/profile')
+                if user.user_role == 'student':
+                    return redirect('students/dashboard')
+                elif user.user_role == 'teacher':
+                    return redirect('teachers/teacher')
+                elif user.user_role == 'admin':
+                    return redirect('/admin-dashboard')
 
         form = LoginForm()
         return render(request, 'users/login.html', {'form': form})
@@ -114,7 +119,7 @@ class StudentListView(AdminRequiredMixin, View):
 class StudentByTeamView(AdminRequiredMixin, View):
     def get(self, request, id):
         team = get_object_or_404(Team, id=id)
-        student = team.student.all()
+        student = team.students.all()
         return render(request, 'users/students.html', context={"student":student})
 
 

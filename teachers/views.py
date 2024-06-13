@@ -10,6 +10,9 @@ class TeacherDashboardView(TeacherRequiredMixin, View):
         return render(request, 'teachers/teacher_dashboard.html')
     
 
+class Profile(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'teachers/profile.html')
 
 class TeacherTeamsView(TeacherDashboardView, View):
     def get(self, request):
@@ -18,16 +21,15 @@ class TeacherTeamsView(TeacherDashboardView, View):
         return render(request, 'teachers/guruhlarim.html', context={"teams":teams})
     
 
-class LessonView(View):
-    def get(self, request, group_id):
-        team = get_object_or_404(Team, id=group_id)
+class TeacherGroupView(TeacherRequiredMixin, View):
+    def get(self, request, team_id):
+        team = get_object_or_404(Team, id=team_id)
         lessons = team.lessons.all()
-        return render(request, 'teachers/lessons.html', context={"lessons":lessons})
-    
+        return render(request, 'teachers/lessons.html', context={'team':team, 'lessons':lessons})
 
-class TeamStudentsView(TeacherRequiredMixin, View):
-    def get(self, request):
-        teacher = get_object_or_404(Teacher, user=request.user)
-        students = teacher.students.all()
-        return render(request, 'teachers/students.html', context={"students":students})
     
+class TeacherStudentsView(TeacherRequiredMixin, View):
+    def get(self, request, team_id):
+        team = get_object_or_404(Team, id=team_id)
+        students = team.students.all()
+        return render(request, 'teachers/students.html', context={'team':team, 'students':students})

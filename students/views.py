@@ -4,10 +4,15 @@ from django.views import View
 from users.models import Student, Team
 from .forms import HomeworkForm
 from .models import Lesson, Homework
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class StudentDashboardView(StudentRequiredMixin, View):
     def get(self, request):
         return render(request, 'students/dashboard.html')
+
+class Profile(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'teachers/profile.html')
 
 class StudentGroupView(StudentRequiredMixin, View):
     def get(self, request):

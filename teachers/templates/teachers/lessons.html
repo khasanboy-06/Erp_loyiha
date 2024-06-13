@@ -2,36 +2,42 @@
 
 {% block content %}
 
+<h2>{{team.name}}</h2>
+<br>  
 <div>
   <thead>
     <tr style="padding: 2px;">
 
-        &nbsp;&nbsp;<a href="#">
-            <th scope="col"><b>Yo'qlamalar</b></th>
+        &nbsp;&nbsp;<a href="{% url 'teachers:lessons' team.id %}">
+            <th scope="col"><b>Darslar</b></th>
         </a>&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="">
-            <th scope="col"><b>Videolar</b></th>
+            <th scope="col"><b>Vazifalar</b></th>
         </a>&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="#">
-            <th scope="col"><b>Uy vazifalar</b></th>
+            <th scope="col"><b>Yo'qlama</b></th>
         </a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="">
-            <th scope="col"><b>Imtixonlar</b></th>
-        </a>
+        <a href="{% url 'teachers:students' team.id %}">
+            <th scope="col"><b>O'quvchilar</b></th>
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">
+          <th scope="col"><b>Dars qo'shish</b></th>
+      </a>
     </tr>
 </thead>
 </div>
+<br>
 <table class="table">
     <thead>
       <tr>
         <th scope="col">Title</th>
         <th scope="col">Date</th>
-        <th scope="col">Homework status</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody >
         {% for lesson in lessons %}
-      <tr class="table-warning">
+      <tr>
         <td>{{lesson.title}}</td>
         <td>{{lesson.date}}</td>
         <td>Active</td>

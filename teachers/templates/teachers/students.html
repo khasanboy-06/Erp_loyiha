@@ -2,19 +2,44 @@
 
 {% block content %}
 
+<h2>{{team.name}}</h2>
+<br>  
+<div>
+  <thead>
+    <tr style="padding: 2px;">
+
+        &nbsp;&nbsp;<a href="{% url 'teachers:lessons' team.id %}">
+            <th scope="col"><b>Darslar</b></th>
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="">
+            <th scope="col"><b>Vazifalar</b></th>
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">
+            <th scope="col"><b>Yo'qlama</b></th>
+        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'teachers:students' team.id %}">
+            <th scope="col"><b>O'quvchilar</b></th>
+        </a>
+    </tr>
+</thead>
+</div>
+<br>
+
 <table class="table">
     <thead>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Full name</th>
-        <th scope="col"></th>
+        <th scope="col">Team</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody >
         {% for student in students %}
-      <tr class="table-warning">
-        <td>{{student.first_name}}</td>
-        <td></td>
+      <tr>
+        <td>{{student.user.id}}</td>
+        <td>{{student.user.first_name}} {{student.user.last_name}}</td>
+        <td>{{student.team.name}}</td>
         <td>Active</td>
       </tr>
       {% endfor %}

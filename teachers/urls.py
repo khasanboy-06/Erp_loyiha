@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import TeacherDashboardView, TeacherTeamsView, LessonView, TeamStudentsView
+from .views import TeacherDashboardView, TeacherTeamsView, TeacherGroupView, TeacherStudentsView, Profile
 
 app_name = 'teachers'
 
 urlpatterns = [
     path('teacher/', TeacherDashboardView.as_view(), name='teacher'),
     path('guruhlarim/', TeacherTeamsView.as_view(), name='guruhlarim'),
-    path('lessons/<int:group_id>/', LessonView.as_view(), name='lessons'),
-    path('students/', TeamStudentsView.as_view(), name='students'),
+    path('lessons/<int:team_id>/', TeacherGroupView.as_view(), name='lessons'),
+    path('students/<int:team_id>/', TeacherStudentsView.as_view(), name='students'),
+    path('profile/', Profile.as_view(), name='profile'),
 ]
