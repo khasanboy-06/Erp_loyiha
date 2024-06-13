@@ -38,7 +38,6 @@ class LoginView(View):
     
 
 class RegisterView(AdminRequiredMixin, View):
-
     def get(self, request):
         form = RegisterForm()
         return render(request, 'users/register.html', {'form': form})
@@ -62,7 +61,6 @@ class RegisterView(AdminRequiredMixin, View):
                 new_teacher.save()
 
             return redirect('/data')
-
         form = RegisterForm()
         return render(request, 'users/register.html', {'form': form})
     

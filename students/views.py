@@ -44,10 +44,8 @@ class HomeworkView(StudentRequiredMixin, View):
             homework.description = form.cleaned_data['description']
             homework.homework_file = form.cleaned_data['homework_file']
             homework.save()
-
             lesson.homework_status = True
             lesson.save()
-
             return redirect('/')
         
 class HomeDetailView(StudentRequiredMixin, View):

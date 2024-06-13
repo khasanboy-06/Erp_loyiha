@@ -11,4 +11,5 @@ urlpatterns = [
     path('homework/<int:lesson_id>/', HomeworkView.as_view(), name='homework'),
     path('homework-detail/<int:lesson_id>/', HomeDetailView.as_view(), name='homework_detail'),
     path('profile/', Profile.as_view(), name='profile'), 
+
 ]
