@@ -1,9 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from users.permissions import TeacherRequiredMixin
 from users.models import Teacher, Team
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CreateLessonForm
+from students.models import Lesson
+from django.urls import reverse
 
 
 class TeacherDashboardView(TeacherRequiredMixin, View):
@@ -45,4 +47,12 @@ class TeacherCreateLessonView(TeacherRequiredMixin, View):
         team = get_object_or_404(Team, id=team_id)
         form = CreateLessonForm(request.POST)
         if form.is_valid():
-            lesson = Less
+            lesson = Lesson()
+            lesson.team = team
+            lesson.title = form.cleaned_data['title']
+            lesson.save()
+            url = reverse('teachers:lessons', args=[team_id])
+            return redirect(url)
+        
+
+    

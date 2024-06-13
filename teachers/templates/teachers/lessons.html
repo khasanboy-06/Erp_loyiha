@@ -20,7 +20,7 @@
         <a href="{% url 'teachers:students' team.id %}">
             <th scope="col"><b>O'quvchilar</b></th>
         </a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#">
+        <a href="{% url 'teachers:create_lesson' team.id %}">
           <th scope="col"><b>Dars qo'shish</b></th>
       </a>
     </tr>
