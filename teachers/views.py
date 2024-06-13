@@ -4,7 +4,7 @@ from users.permissions import TeacherRequiredMixin
 from users.models import Teacher, Team, User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CreateLessonForm
-from students.models import Lesson
+from students.models import Lesson, Homework
 from django.urls import reverse
 from users.forms import ProfileForm
 
@@ -69,4 +69,13 @@ class EditProfileView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             return redirect('/profile') 
-        return render(request, 'teachers/edit_profile.html', {'form': form})    
+        return render(request, 'teachers/edit_profile.html', {'form': form}) 
+
+
+class TeacherStudentsLessonsView(TeacherRequiredMixin, View):
+    def get(self, request, *args, **kwargs):
+        id = kwargs.get('id')  
+        lesson = get_object_or_404(Lesson, id=id)
+        homeworks = Homework.objects.filter(lesson=lesson)
+        students = [homework.student for homework in homeworks]
+        return render(request, 'teachers/lesson_students.html', {'students': students})

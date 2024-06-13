@@ -38,7 +38,7 @@
     <tbody >
         {% for lesson in lessons %}
       <tr>
-        <td>{{lesson.title}}</td>
+        <td><a href="{% url 'teachers:lesson_student' lesson_id %}">{{lesson.title}}</a></td>
         <td>{{lesson.date}}</td>
         <td>Active</td>
       </tr>

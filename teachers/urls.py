@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TeacherDashboardView, TeacherTeamsView, TeacherGroupView, TeacherStudentsView, Profile, TeacherCreateLessonView, EditProfileView
+from .views import TeacherDashboardView, TeacherTeamsView, TeacherGroupView, TeacherStudentsView, Profile, TeacherCreateLessonView, EditProfileView, TeacherStudentsLessonsView
 
 app_name = 'teachers'
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('profile/', Profile.as_view(), name='profile'),
     path('create-lesson/<int:team_id>/', TeacherCreateLessonView.as_view(), name='create_lesson'),
     path('edit-profile/<int:id>/', EditProfileView.as_view(), name='edit_profile'),
+    path('lesson-student/<int:id>/', TeacherStudentsLessonsView.as_view(), name='lesson_student'),
 ]
